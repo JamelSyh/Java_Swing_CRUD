@@ -46,5 +46,3 @@ matricule: 202031080692
 </h4>
 
 <br/>
-<strong> Note </strong> 
-<br/>
