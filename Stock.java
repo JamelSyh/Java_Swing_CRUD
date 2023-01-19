@@ -26,8 +26,6 @@ public class Stock {
     update = new Update();
     updateForm = update.getUpdateForm();
     updateP = update.getUpdateP();
-    // updateB = update.getUpdateB();
-
 
 
 
@@ -60,7 +58,7 @@ public class Stock {
         if (data != null) {
           jTable.setModel(tableModel);
         } else {
-          tableModel.setRowCount(0);
+          tableModel = new DefaultTableModel(read.queryData(), read.columnNames);
           jTable.setModel(tableModel);
         }
       }
@@ -69,8 +67,6 @@ public class Stock {
 
     stockP.add(updateP);
     stockP.add(readP);
-
-    // stockP.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "stock"));
 
   }
 

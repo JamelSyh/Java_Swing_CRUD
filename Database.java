@@ -106,6 +106,35 @@ public class Database {
     }
   }
 
+  public Medicine[] queryUnderCondition(int condition) {
+    try {
+      String sql = "SELECT count(*) FROM " + TABLE + " WHERE quantity <= " + condition;
+      ResultSet resultSet = statement.executeQuery(sql);
+      resultSet.next();
+      Medicine[] medList = new Medicine[resultSet.getInt(1)];
+      
+      sql = "SELECT * FROM " + TABLE + " WHERE quantity <= " + condition;
+      resultSet = statement.executeQuery(sql);
+      int index = 0;
+      while (resultSet.next()) {
+
+        String _code = resultSet.getString(1);
+        String name = resultSet.getString(2);
+        double price = resultSet.getDouble(3);
+        int quantity = resultSet.getInt(4);
+        String date = resultSet.getString(5);
+
+        medList[index] = new Medicine(_code, name, price, quantity, date);
+
+        index++;
+      }
+      return medList;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   public Medicine[] queryByCode(String code) {
 
     try {
@@ -166,16 +195,6 @@ public class Database {
     resultSet.next();
     return resultSet.getInt(1) > 0;
   }
-
-  public static void main(String[] args) throws Exception {
-    // Database db = new Database();
-    // Medicine med = new Medicine("12345", "test", 99.99, 99);
-    // db.insert(med);
-    // System.out.println(db.delete("12345"));
-    
-    
-  }
-
 }
 
 

@@ -8,6 +8,7 @@ public class Main {
   Create create;
   Stock stock;
   Read read;
+  Dashboard dashboard;
   Form form, updateForm;
   JPanel mainP, createP, stockP, dashboardP;
   JButton createB;
@@ -41,10 +42,8 @@ public class Main {
 
     // =============================== Dashboard =================================
 
-    dashboardP = new JPanel();
-    dashboardP.setBackground(Color.RED);
-
-
+    dashboard = new Dashboard();
+    dashboardP = dashboard.getDashboardP();
 
     mainP.add(createP, "1");
     mainP.add(stockP, "2");

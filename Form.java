@@ -57,12 +57,6 @@ public class Form {
     dateT.setToolTipText ("yyyy-mm-dd");
     submitB.setBounds (350, 150, 100, 30);
 
-    // submitB.addActionListener(new ActionListener() {
-    //   public void actionPerformed(ActionEvent e) {
-    //     formInsert();
-    //   }
-    // });
-
 
     formP.add (codeT);
     formP.add (dateT);
@@ -83,21 +77,40 @@ public class Form {
   public void formDelete() {
     med = validator();
     if (med != null) {
-      db.delete(med.getCode());
+      boolean rs = db.delete(med.getCode());
+      if (rs) {
+        dialogP("data deleted successfully");
+      }
+      else {
+        dialogP("error occured");
+      }
     }
 
   }
 
   public void formInsert() {
     med = validator();
+    boolean rs;
     if (type == "create") {
       if (med != null) {
-        db.insert(med);
+        rs = db.insert(med);
+        if (rs) {
+          dialogP("data inserted successfully");
+        }
+        else {
+          dialogP("error occured");
+        }
       }
     } else if (type == "update") {
       if (med != null) {
         med.toString();
-        db.update(med);
+        rs = db.update(med);
+          if (rs) {
+            dialogP("data updated successfully");
+          }
+          else {
+            dialogP("error occured");
+          }
       }
     }
   }
@@ -114,16 +127,25 @@ public class Form {
     Medicine med = getText();
     
     if (med.getCode().isEmpty() || med.getName().isEmpty() || med.getPrice() < 0 || med.getDate().isEmpty() || med.getQuantity() < 0) {
-      // JFrame f1 = (JFrame) SwingUtilities.windowForComponent(formP);
-      // JDialog d = new JDialog(f1, "dialog Box");
-      // JLabel l = new JLabel("fill the required fields");
-      // d.add(l);
-      // f1.add(d);
+      dialogP("fill the required fields");
       setText();
       return null;
     } 
     setText();
     return  med;
+  }
+
+  public void dialogP(String text) {
+
+      JDialog dialog = new JDialog();
+
+      dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+      dialog.setLayout(new GridBagLayout());
+      dialog.setBounds(500, 500, 200, 100);
+
+      JLabel l = new JLabel(text);
+      dialog.add(l);
+      dialog.setVisible(true);
   }
 
   public Medicine getText() {
@@ -136,7 +158,6 @@ public class Form {
 
     double newPrice = price.isEmpty() ? -1 : Double.parseDouble(price);
     int newQuantity = quantity.isEmpty() ? -1 : Integer.parseInt(quantity);
-    System.out.println(newPrice);
 
     return  new Medicine(code, name, newPrice, newQuantity, date);
   }

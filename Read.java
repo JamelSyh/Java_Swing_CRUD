@@ -12,7 +12,6 @@ public class Read {
   Database db;
   String[] columnNames = {"code", "name", "price", "date", "quantity"};
   String[][] data;
-  // DefaultTableModel tableModel;
 
   public Read() {
     readP = new JPanel();
@@ -55,7 +54,6 @@ public class Read {
     readP.add(operationP);
     readP.add(tableP);
 
-    // tableP.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY)));
   }
 
   public JPanel getReadP() {
@@ -77,10 +75,6 @@ public class Read {
   public JButton getDeleteB() {
     return deleteB;
   }
-
-  // public Medicine search(String code) {
-  //   return med = db.queryByCode(code);
-  // }
 
   public String[][] queryData() {
     Medicine[] medList = db.queryAll();
@@ -117,7 +111,6 @@ public class Read {
 
   public void refreshTable() {
     String[][] data = queryData();
-    System.out.println(data.length);
     DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
      jTable.setModel(dtm);
   }

@@ -20,7 +20,6 @@ public class Update {
 
     form = new Form("update");
     formP = form.getFormP();
-    // formP.setLayout(null);
     updateB = form.getSubmitB();
     
     updateP.add(formP);

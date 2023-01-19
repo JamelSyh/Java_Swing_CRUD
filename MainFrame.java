@@ -45,6 +45,7 @@ public class MainFrame extends JFrame {
           cardLayout.show(mainP, "1");
         }
     });
+
     stockB.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
           cardLayout.show(mainP, "2");
@@ -114,8 +115,6 @@ public class MainFrame extends JFrame {
     add(navP, BorderLayout.NORTH);
     add(menuP, BorderLayout.WEST);
     add(mainP, BorderLayout.CENTER);
-    // pack();
-    // setVisible(true);
   }
 
   public static void main(String[] args) {
