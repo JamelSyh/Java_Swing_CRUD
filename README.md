@@ -16,13 +16,9 @@ then compile all classes using javac *.java then run the code using java MainFra
 
 
 <h2> Read </h2>
-<img src="https://github.com/JamelSyh/php-crud-mvc-oop/blob/284e96b654b1bbe441b7da376756378d23fe0380/static/images/Screenshot%20from%202022-12-31%2013-01-38.png" />
+<img src="https://github.com/JamelSyh/Java_Swing_CRUD/blob/932be34095199666b74550d0deb694e77b24da2e/Screenshot%20from%202023-01-19%2022-54-23.png" />
 
 <br/>
-<br/>
-
-<h2> Create </h2>
-<img src="https://github.com/JamelSyh/php-crud-mvc-oop/blob/187892eac2c3beb1f955d0161bc15cf910e7ce07/static/images/Screenshot%20from%202022-12-31%2013-02-28.png" />
 
 <br/>
 <br/>
